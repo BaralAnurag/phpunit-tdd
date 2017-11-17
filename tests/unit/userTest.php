@@ -2,25 +2,27 @@
 
 class UserTest extends \PHPUnit_Framework_TestCase
 {
+  protected $user;
 
-
-
-  public function testThatWeCanGetTheFirstName()
+  protected function setUp()
   {
-    $user = new \App\Models\User;
+      $this->user = new \App\Models\User;
+  }
 
-    $user->setFirstName('Anurag');
 
-    $this->assertEquals($user->getFirstName(),'Anurag');
+  /** @test */
+  public function that_we_can_get_the_first_name()
+  {
+    $this->user->setFirstName('Anurag');
+
+    $this->assertEquals($this->user->getFirstName(),'Anurag');
   }
 
   public function testThatWeCanGetTheLastName()
   {
-    $user = new \App\Models\User;
+    $this->user->setLastName('Baral');
 
-    $user->setLastName('Baral');
-
-    $this->assertEquals($user->getLastName(),'Baral');
+    $this->assertEquals($this->user->getLastName(),'Baral');
   }
 
   public function testFullNameIsReturned()
